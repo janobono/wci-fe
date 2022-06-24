@@ -16,9 +16,12 @@ export const RESOURCE = {
     UNKNOWN_ERROR: 'unknown-error',
     ACTION: {
         HOME: 'action.home',
+        SWITCH_LOCALE: 'action.switch-locale',
+        SWITCH_COLOR_MODE: 'action.switch-color-mode',
         SIGN_IN: 'action.sign-in',
         SIGN_UP: 'action.sign-up',
         SIGN_OUT: 'action.sign-out'
+
     },
     COOKIES_CONSENT: {
         TEXT: 'cookies-consent.text',

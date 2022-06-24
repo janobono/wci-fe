@@ -3,6 +3,8 @@
   "unknown-error": "An unknown error occurred. Please contact system administrator.",
   "action": {
     "home": "Home",
+    "switch-locale": "Switch Language",
+    "switch-color-mode": "Switch Color Mode",
     "sign-in": "Sign In",
     "sign-up": "Sign Up",
     "sign-out": "Sign Out"

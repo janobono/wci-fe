@@ -4,4 +4,7 @@ export interface PaginatedResponse<T> {
     content: T[];
 }
 
-export const queries = {};
+export const queries = {
+    authorities: (params: Params = {}) => ['/authorities', params],
+    captcha: (params: Params = {}) => ['/captcha', params],
+};

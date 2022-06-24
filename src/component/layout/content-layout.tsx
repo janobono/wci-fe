@@ -1,16 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, LogIn, LogOut, Settings } from 'react-feather';
+import { Home, LogIn, LogOut, Moon, Settings, Sun } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import { hasAdminAuthority, useAuthState } from '../../context/auth-state-context-provider';
 import { RESOURCE } from '../../locale/i18n';
-import { Box, Flex, HStack, IconButton, Spacer, Tooltip } from '@chakra-ui/react';
-import { LocaleSwitch } from '../switch';
-import ColorModeSwitch from '../switch/color-mode-switch';
+import { Box, Flex, HStack, IconButton, Spacer, Tooltip, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import CookiesConsent from '../cookie-consent';
+import { FlagEn, FlagSk } from '../icon';
+import { useGlobalState } from '../../context/global-state-context-provider';
 
 const ContentLayout: React.FC<any> = ({children}) => {
+    const {toggleColorMode} = useColorMode();
+    const SwitchIcon = useColorModeValue(Moon, Sun);
+
     const {t} = useTranslation();
+    const globalState = useGlobalState();
     const authState = useAuthState();
 
     return (
@@ -24,8 +28,26 @@ const ContentLayout: React.FC<any> = ({children}) => {
                         to="/"
                     />
                 </Tooltip>
-                <LocaleSwitch/>
-                <ColorModeSwitch/>
+
+                <Tooltip label={t(RESOURCE.ACTION.SWITCH_LOCALE)}>
+                    <IconButton
+                        onClick={() => globalState.setLocale(globalState.locale === 'en' ? 'sk' : 'en')}
+                        icon={globalState.locale === 'en' ?
+                            <FlagSk/> :
+                            <FlagEn/>
+                        }
+                        aria-label={t(RESOURCE.ACTION.SWITCH_LOCALE)}
+                    />
+                </Tooltip>
+
+                <Tooltip label={t(RESOURCE.ACTION.SWITCH_COLOR_MODE)}>
+                    <IconButton
+                        onClick={toggleColorMode}
+                        icon={<SwitchIcon/>}
+                        aria-label={t(RESOURCE.ACTION.SWITCH_COLOR_MODE)}
+                    />
+                </Tooltip>
+
                 <Spacer/>
 
                 {hasAdminAuthority(authState.user) ? (
@@ -42,7 +64,6 @@ const ContentLayout: React.FC<any> = ({children}) => {
                 {authState.token ? (
                     <Tooltip label={t(RESOURCE.ACTION.SIGN_OUT)}>
                         <IconButton
-                            colorScheme="transparent"
                             aria-label={t(RESOURCE.ACTION.SIGN_OUT)}
                             onClick={() => authState.signOut()}
                             icon={<LogOut/>}

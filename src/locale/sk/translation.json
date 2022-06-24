@@ -3,6 +3,8 @@
   "unknown-error": "Vyskytla sa neznáma chyba. Kontaktujte správcu systému.",
   "action": {
     "home": "Hlavná stránka",
+    "switch-locale": "Zmeniť jazyk",
+    "switch-color-mode": "Zmeniť farebný režim",
     "sign-in": "Prihlásiť",
     "sign-up": "Registrovať",
     "sign-out": "Odhlásiť"

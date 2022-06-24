@@ -65,19 +65,12 @@ export interface SignInData {
 export interface SignUpData {
     username: string,
     password: string,
-    titleBefore: string,
+    titleBefore: string | null,
     firstName: string,
-    midName: string,
+    midName: string | null,
     lastName: string,
-    titleAfter: string,
+    titleAfter: string | null,
     email: string,
-    phoneNumber: string,
-    company: string,
-    address: string,
-    city: string,
-    postalCode: string,
-    vatId: string,
-    contractorId: string,
     captchaText: string,
     captchaToken: string
 }
