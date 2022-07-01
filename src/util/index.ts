@@ -7,7 +7,8 @@ export enum AppErrorCode {
     USER_IS_DISABLED = 'USER_IS_DISABLED',
     USER_NOT_FOUND = 'USER_NOT_FOUND',
     USER_USERNAME_IS_USED = 'USER_USERNAME_IS_USED',
-    USER_EMAIL_IS_USED = 'USER_EMAIL_IS_USED'
+    USER_EMAIL_IS_USED = 'USER_EMAIL_IS_USED',
+    GDPR = 'GDPR'
 }
 
 export interface AppError {
@@ -16,6 +17,14 @@ export interface AppError {
     code: AppErrorCode,
     message: string
 }
+
+export const cls = (input: string) =>
+    input
+        .replace(/\s+/gm, ' ')
+        .split(' ')
+        .filter((cond) => typeof cond === 'string')
+        .join(' ')
+        .trim();
 
 const errorToAppError = async (error: any): Promise<AppError> => {
     const result = {

@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import { SVGRProps } from '../switch';
+import { IconProps } from './index';
+import { cls } from '../../../util';
 
-const FlagSk = forwardRef<SVGSVGElement, SVGRProps>(({size = 24}, ref) => {
+const FlagSk = forwardRef<SVGSVGElement, IconProps>(({size = 24, className}, ref) => {
     return (
         <svg
             ref={ref}
@@ -10,6 +10,7 @@ const FlagSk = forwardRef<SVGSVGElement, SVGRProps>(({size = 24}, ref) => {
             width={size}
             height={size}
             viewBox="0 0 512 512"
+            className={cls(`${className}`)}
         >
             <path fill="#ee1c25" d="M0 0h512v512H0z"/>
             <path fill="#0b4ea2" d="M0 0h512v341.3H0z"/>
@@ -25,10 +26,6 @@ const FlagSk = forwardRef<SVGSVGElement, SVGRProps>(({size = 24}, ref) => {
         </svg>
     );
 });
-
-FlagSk.propTypes = {
-    size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
 
 FlagSk.displayName = 'FlagSk';
 

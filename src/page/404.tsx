@@ -1,5 +1,4 @@
 import React from 'react';
-import { Center, Text } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { RESOURCE } from '../locale/i18n';
 
@@ -7,9 +6,9 @@ const NotFoundPage: React.FC = () => {
     const {t} = useTranslation();
 
     return (
-        <Center role="alert" height="100vh">
-            <Text>{t(RESOURCE.PAGE_NOT_FOUND)}</Text>
-        </Center>
+        <div className="flex min-h-screen justify-center items-center">
+            <p className="font-mono text-xl">{t(RESOURCE.PAGE_NOT_FOUND)}</p>
+        </div>
     );
 };
 

@@ -4,7 +4,6 @@
   "action": {
     "home": "Home",
     "switch-locale": "Switch Language",
-    "switch-color-mode": "Switch Color Mode",
     "sign-in": "Sign In",
     "sign-up": "Sign Up",
     "sign-out": "Sign Out"
@@ -13,21 +12,6 @@
     "text": "We use cookies to optimize site functionality and give you the best possible experience.",
     "link": "Learn More.",
     "agree": "Allow Cookies"
-  },
-  "cookies-info": {
-    "website-instructions": "This website makes use of cookies to enhance the browsing experience and provide additional functionality.",
-    "personal-instructions": "None of this data can or will be used to identify or contact you.",
-    "agree-instructions": "By clicking Allow cookies you give your permission to this website to store small bits of data on your device.",
-    "learn-instructions": "To learn more about cookies and localStorage, visit",
-    "disable-instructions": "To disable all cookies through the browser, click on the corresponding link and follow the instructions:"
-  },
-  "delete-confirmation-dialog": {
-    "title": "Success"
-  },
-  "error-message": {
-    "error": "Error",
-    "show-error": "Show Error",
-    "copy": "Copy"
   },
   "sign-in": {
     "username": {

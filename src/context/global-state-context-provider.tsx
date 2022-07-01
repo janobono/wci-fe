@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import i18n, { getLocale, LOCALE_ITEM } from '../locale/i18n';
 import { client } from '../api/client';
 
-const COOKIES_ENABLED = 'COOKIES_ENABLED';
+const COOKIES_ENABLED_ITEM = 'COOKIES_ENABLED';
 
 const paths = {
     applicationProperties: '/application-properties'
@@ -29,20 +29,20 @@ const GlobalStateContextProvider: React.FC<any> = ({children}) => {
 
     const [locales, setLocales] = useState<string[]>();
 
-    const [cookiesEnabled, setCookiesEnabled] = useState(localStorage.getItem(COOKIES_ENABLED) === 'true');
+    const [cookiesEnabled, setCookiesEnabled] = useState(localStorage.getItem(COOKIES_ENABLED_ITEM) === 'true');
 
     const [locale, setLocale] = useState(getLocale());
 
     const setCookiesEnabledToLocalStorage = (cookiesEnabled: boolean) => {
         if (cookiesEnabled) {
-            localStorage.setItem(COOKIES_ENABLED, cookiesEnabled.toString());
+            localStorage.setItem(COOKIES_ENABLED_ITEM, cookiesEnabled.toString());
         } else {
             localStorage.clear();
         }
         setCookiesEnabled(cookiesEnabled);
     }
 
-    const setLocaleAndChangeLanguage = (locale: string) => {
+    const setLocaleToLocalStorageAndChangeLanguage = (locale: string) => {
         if (i18n.language !== locale) {
             i18n.changeLanguage(locale);
         }
@@ -73,7 +73,7 @@ const GlobalStateContextProvider: React.FC<any> = ({children}) => {
                     cookiesEnabled,
                     setCookiesEnabled: setCookiesEnabledToLocalStorage,
                     locale,
-                    setLocale: setLocaleAndChangeLanguage
+                    setLocale: setLocaleToLocalStorageAndChangeLanguage
                 }
             }
         >{children}

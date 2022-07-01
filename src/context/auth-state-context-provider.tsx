@@ -34,6 +34,7 @@ interface JWTPayload {
     lastName: string;
     titleAfter: string;
     email: string;
+    gdpr: boolean;
     confirmed: boolean;
     enabled: boolean;
     authorities: string[];

@@ -7,8 +7,9 @@ import { useAuthState } from './context/auth-state-context-provider';
 import SignUpPage from './page/sign-up';
 import CookiesInfoPage from './page/cookies-info';
 import { useGlobalState } from './context/global-state-context-provider';
+import { FullScreenSpinner } from './component/ui/progress';
 
-function App() {
+const App: React.FC = () => {
     const globalState = useGlobalState();
     const authState = useAuthState();
 
@@ -19,15 +20,18 @@ function App() {
     }, [globalState.applicationName])
 
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/cookies-info" element={<CookiesInfoPage/>}/>
-                <Route path="/sign-in" element={<SignInPage/>}/>
-                <Route path="/sign-up" element={<SignUpPage/>}/>
-                <Route path="/" element={<IndexPage/>}/>
-                <Route path="*" element={<NotFoundPage/>}/>
-            </Routes>
-        </BrowserRouter>
+        globalState.applicationName ?
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/cookies-info" element={<CookiesInfoPage/>}/>
+                    <Route path="/sign-in" element={<SignInPage/>}/>
+                    <Route path="/sign-up" element={<SignUpPage/>}/>
+                    <Route path="/" element={<IndexPage/>}/>
+                    <Route path="*" element={<NotFoundPage/>}/>
+                </Routes>
+            </BrowserRouter>
+            :
+            <FullScreenSpinner/>
     );
 }
 

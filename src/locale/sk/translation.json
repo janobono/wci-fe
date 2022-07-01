@@ -4,7 +4,6 @@
   "action": {
     "home": "Hlavná stránka",
     "switch-locale": "Zmeniť jazyk",
-    "switch-color-mode": "Zmeniť farebný režim",
     "sign-in": "Prihlásiť",
     "sign-up": "Registrovať",
     "sign-out": "Odhlásiť"
@@ -13,21 +12,6 @@
     "text": "Používame cookies, aby sme optimalizovali funkčnosť stránky a poskytli vám najlepší možný zážitok.",
     "link": "Dozvedieť sa viac.",
     "agree": "Povoliť cookies"
-  },
-  "cookies-info": {
-    "website-instructions": "Táto webová stránka používa súbory cookie na zlepšenie zážitku z prehliadania a poskytovanie dodatočných funkcií.",
-    "personal-instructions": "Žiadne z týchto údajov nemožno a ani nebudú použité na vašu identifikáciu alebo kontaktovanie.",
-    "agree-instructions": "Kliknutím na položku Povoliť cookies dávate tejto webovej lokalite povolenie na ukladanie malých kúskov údajov na vašom zariadení.",
-    "learn-instructions": "Ak sa chcete dozvedieť viac o cookies a localStorage, navštívte",
-    "disable-instructions": "Ak chcete zakázať všetky súbory cookie prostredníctvom prehliadača, kliknite na príslušný odkaz a postupujte podľa pokynov:"
-  },
-  "delete-confirmation-dialog": {
-    "title": "Úspech"
-  },
-  "error-message": {
-    "error": "Chyba",
-    "show-error": "Zobraziť chybu",
-    "copy": "Kopírovať"
   },
   "sign-in": {
     "username": {

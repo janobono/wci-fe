@@ -1,17 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FieldValues, useForm } from 'react-hook-form';
-import {
-    Button,
-    ButtonGroup,
-    FormControl,
-    FormErrorMessage,
-    FormLabel,
-    HStack,
-    Input,
-    Text,
-    VStack
-} from '@chakra-ui/react';
 import { AlertTriangle } from 'react-feather';
 import { useAuthState } from '../context/auth-state-context-provider';
 import { useTranslation } from 'react-i18next';
@@ -38,10 +27,16 @@ const SignInPage: React.FC = () => {
             await authState.signIn({username: values.username, password: values.password});
         } catch (error: any) {
             const appError = await errorToAppError(error);
-            if (appError.code === AppErrorCode.UNKNOWN) {
-                setError(t(RESOURCE.UNKNOWN_ERROR));
-            } else {
-                setError(t(RESOURCE.SIGN_IN.ERROR.INVALID_CREDENTIALS));
+            switch (appError.code) {
+                case AppErrorCode.INVALID_CREDENTIALS: {
+                    setError(t(RESOURCE.SIGN_IN.ERROR.INVALID_CREDENTIALS));
+                    break;
+                }
+                case AppErrorCode.UNKNOWN:
+                default: {
+                    setError(t(RESOURCE.UNKNOWN_ERROR));
+                    break;
+                }
             }
         }
     }
@@ -49,15 +44,11 @@ const SignInPage: React.FC = () => {
     return (
         <SimpleLayout>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <VStack
-                    spacing={5}
-                    alignItems="start"
-                    maxWidth="300px"
-                    marginX="auto"
-                >
-                    <FormControl isInvalid={errors.username}>
-                        <FormLabel htmlFor="username">{t(RESOURCE.SIGN_IN.USERNAME.LABEL)}</FormLabel>
-                        <Input
+                <div className="grid grid-cols-1 gap-4 max-w-xs">
+                    <div>
+                    {/*<div isInvalid={errors.username}>*/}
+                        <label htmlFor="username">{t(RESOURCE.SIGN_IN.USERNAME.LABEL)}</label>
+                        <input
                             type="text"
                             id="username"
                             placeholder={t(RESOURCE.SIGN_IN.USERNAME.PLACEHOLDER)}
@@ -65,14 +56,15 @@ const SignInPage: React.FC = () => {
                                 required: t(RESOURCE.SIGN_IN.ERROR.USERNAME_REQUIRED).trim()
                             })}
                         />
-                        <FormErrorMessage>
-                            {errors.username && errors.username.message}
-                        </FormErrorMessage>
-                    </FormControl>
+                        {/*<FormErrorMessage>*/}
+                        {/*    {errors.username && errors.username.message}*/}
+                        {/*</FormErrorMessage>*/}
+                    </div>
 
-                    <FormControl isInvalid={errors.password}>
-                        <FormLabel htmlFor="password">{t(RESOURCE.SIGN_IN.PASSWORD.LABEL)}</FormLabel>
-                        <Input
+                    <div>
+                    {/*<div isInvalid={errors.password}>*/}
+                        <label htmlFor="password">{t(RESOURCE.SIGN_IN.PASSWORD.LABEL)}</label>
+                        <input
                             type="password"
                             id="password"
                             placeholder={t(RESOURCE.SIGN_IN.PASSWORD.PLACEHOLDER)}
@@ -80,43 +72,43 @@ const SignInPage: React.FC = () => {
                                 required: t(RESOURCE.SIGN_IN.ERROR.PASSWORD_REQUIRED).trim()
                             })}
                         />
-                        <FormErrorMessage>
-                            {errors.password && errors.password.message}
-                        </FormErrorMessage>
-                    </FormControl>
+                        {/*<FormErrorMessage>*/}
+                        {/*    {errors.password && errors.password.message}*/}
+                        {/*</FormErrorMessage>*/}
+                    </div>
 
-                    {error ? (
-                        <HStack role="alert" color="red.500">
-                            <AlertTriangle aria-hidden="true"/>
-                            <Text color="red.500" fontSize="sm" fontWeight="medium">
-                                {error}
-                            </Text>
-                        </HStack>
-                    ) : null}
+                    {/*{error ? (*/}
+                    {/*    <HStack role="alert" color="red.500">*/}
+                    {/*        <AlertTriangle aria-hidden="true"/>*/}
+                    {/*        <Text color="red.500" fontSize="sm" fontWeight="medium">*/}
+                    {/*            {error}*/}
+                    {/*        </Text>*/}
+                    {/*    </HStack>*/}
+                    {/*) : null}*/}
 
-                    <ButtonGroup width="full">
-                        <Button
-                            colorScheme="teal"
-                            variant="outline"
-                            flex="1"
-                            onClick={() => {
-                                navigate('/sign-up')
-                            }}
-                        >
-                            {t(RESOURCE.ACTION.SIGN_UP)}
-                        </Button>
+                    {/*<ButtonGroup width="full">*/}
+                    {/*    <Button*/}
+                    {/*        colorScheme="teal"*/}
+                    {/*        variant="outline"*/}
+                    {/*        flex="1"*/}
+                    {/*        onClick={() => {*/}
+                    {/*            navigate('/sign-up')*/}
+                    {/*        }}*/}
+                    {/*    >*/}
+                    {/*        {t(RESOURCE.ACTION.SIGN_UP)}*/}
+                    {/*    </Button>*/}
 
-                        <Button
-                            colorScheme="teal"
-                            type="submit"
-                            flex="1"
-                            isDisabled={isSubmitting}
-                            isLoading={isSubmitting}
-                        >
-                            {t(RESOURCE.ACTION.SIGN_IN)}
-                        </Button>
-                    </ButtonGroup>
-                </VStack>
+                    {/*    <Button*/}
+                    {/*        colorScheme="teal"*/}
+                    {/*        type="submit"*/}
+                    {/*        flex="1"*/}
+                    {/*        isDisabled={isSubmitting}*/}
+                    {/*        isLoading={isSubmitting}*/}
+                    {/*    >*/}
+                    {/*        {t(RESOURCE.ACTION.SIGN_IN)}*/}
+                    {/*    </Button>*/}
+                    {/*</ButtonGroup>*/}
+                </div>
             </form>
         </SimpleLayout>
     );

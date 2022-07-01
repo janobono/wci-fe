@@ -28,21 +28,6 @@ export const RESOURCE = {
         LINK: 'cookies-consent.link',
         AGREE: 'cookies-consent.agree'
     },
-    COOKIES_INFO: {
-        WEBSITE_INSTRUCTIONS: 'cookies-info.website-instructions',
-        PERSONAL_INSTRUCTIONS: 'cookies-info.personal-instructions',
-        AGREE_INSTRUCTIONS: 'cookies-info.agree-instructions',
-        LEARN_INSTRUCTIONS: 'cookies-info.learn-instructions',
-        DISABLE_INSTRUCTIONS: 'cookies-info.disable-instructions'
-    },
-    DELETE_CONFIRMATION_DIALOG: {
-        TITLE: 'delete-confirmation-dialog.title'
-    },
-    ERROR_MESSAGE: {
-        ERROR: 'error-message.error',
-        SHOW_ERROR: 'error-message.show-error',
-        COPY: 'error-message.copy'
-    },
     SIGN_IN: {
         USERNAME: {
             LABEL: 'sign-in.username.label',
@@ -56,6 +41,14 @@ export const RESOURCE = {
             USERNAME_REQUIRED: 'sign-in.error.username-required',
             PASSWORD_REQUIRED: 'sign-in.error.password-required',
             INVALID_CREDENTIALS: 'sign-in.error.invalid-credentials'
+        }
+    },
+    SIGN_UP : {
+        ERROR: {
+            INVALID_CAPTCHA: 'sign-up.error.invalid-captcha',
+            GDPR: 'sign-up.error.gdpr',
+            USERNAME_USED: 'sign-up.error.username-used',
+            EMAIL_USED: 'sign-up.error.email-used'
         }
     }
 };
